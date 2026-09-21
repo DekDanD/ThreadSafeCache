@@ -8,6 +8,7 @@ class ThreadSafeCache
 {
 	struct Item {
 		Value value;
+		int ttl;
 		std::chrono::steady_clock::time_point time;
 	};
 	std::unordered_map<Key, Item> cache;
