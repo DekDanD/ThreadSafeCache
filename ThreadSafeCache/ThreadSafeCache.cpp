@@ -1,6 +1,7 @@
 ﻿#include "ThreadSafeCache.h"
 #include <iostream>
 #include <unordered_map>
+#include <gtest/gtest.h>
 #include <chrono>
 
 template <typename Key, typename Value>
@@ -60,5 +61,6 @@ inline void ThreadSafeCache<Key, Value>::set(const Key& key, Value value, int tt
 
 int main()
 {
-
+	testing::InitGoogleTest();
+	RUN_ALL_TESTS();
 }

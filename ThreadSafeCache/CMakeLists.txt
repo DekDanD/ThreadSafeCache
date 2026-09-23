@@ -1,12 +1,11 @@
-﻿# CMakeList.txt: проект CMake для ThreadSafeCache; включите исходный код и определения,
-# укажите здесь логику для конкретного проекта.
-#
+﻿add_executable(ThreadSafeCache 
+    test.cpp
+    ThreadSafeCache.h
+)
 
-# Добавьте источник в исполняемый файл этого проекта.
-add_executable (ThreadSafeCache "ThreadSafeCache.cpp" "ThreadSafeCache.h")
+target_include_directories(ThreadSafeCache PUBLIC .)
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET ThreadSafeCache PROPERTY CXX_STANDARD 20)
-endif()
+target_link_libraries(ThreadSafeCache PRIVATE GTest::gtest_main)
 
-# TODO: Добавьте тесты и целевые объекты, если это необходимо.
+include(GoogleTest)
+gtest_discover_tests(ThreadSafeCache DISCOVERY_MODE PRE_TEST)
